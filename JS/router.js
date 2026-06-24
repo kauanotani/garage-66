@@ -1,6 +1,8 @@
+import { loginView } from './Views/loginView.js';
+
 const routes = {
-    '/': 'home',
-    '/login': 'login'
+    '/': '<h1>Home - Bem-vindo à Garagem 66</h1>',
+    '/login': loginView
 };
 
 export function navigate(path) {
@@ -9,8 +11,7 @@ export function navigate(path) {
 }
 
 export function render(path) {
-    const page = routes[path] || 'home';
     const content = document.getElementById('content');
     
-    content.innerHTML = `<h1>Você está na página: ${page}</h1>`;
+    content.innerHTML = routes[path] || routes['/'];
 }

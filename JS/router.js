@@ -1,4 +1,5 @@
 import { loginView } from './Views/loginView.js';
+import { setupLoginListener } from './controllers/authController.js'; 
 
 const routes = {
     '/': '<h1>Home - Bem-vindo à Garagem 66</h1>',
@@ -12,6 +13,9 @@ export function navigate(path) {
 
 export function render(path) {
     const content = document.getElementById('content');
-    
     content.innerHTML = routes[path] || routes['/'];
+
+    if (path === '/login') {
+        setupLoginListener();
+    }
 }

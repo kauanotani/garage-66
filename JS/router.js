@@ -1,21 +1,35 @@
 import { loginView } from './Views/loginView.js';
-import { setupLoginListener } from './controllers/authController.js'; 
+import { signupView } from './Views/signupView.js';
+import { homeView } from './Views/homeView.js';
+import { setupLoginListener, setupSignupListener, checkAuth } from './controllers/authController.js';
 
-const routes = {
-    '/': '<h1>Home - Bem-vindo à Garagem 66</h1>',
-    '/login': loginView
-};
-
-export function navigate(path) {
-    window.history.pushState({}, path, window.location.origin + path);
-    render(path);
+export async function renderLogin() {
+    const session = await checkAuth();
+    if (session) {
+        renderHome();
+        return;
+    }
+    document.getElementById('content').innerHTML = loginView;
+    setupLoginListener();
+    document.getElementById('btnIrCadastro').addEventListener('click', renderSignup);
 }
 
-export function render(path) {
-    const content = document.getElementById('content');
-    content.innerHTML = routes[path] || routes['/'];
-
-    if (path === '/login') {
-        setupLoginListener();
+export async function renderSignup() {
+    const session = await checkAuth();
+    if (session) {
+        renderHome();
+        return;
     }
+    document.getElementById('content').innerHTML = signupView;
+    setupSignupListener();
+    document.getElementById('btnIrLogin').addEventListener('click', renderLogin);
+}
+
+export async function renderHome() {
+    const session = await checkAuth();
+    if (!session) {
+        renderLogin();
+        return;
+    }
+    document.getElementById('content').innerHTML = homeView;
 }

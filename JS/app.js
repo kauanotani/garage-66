@@ -1,7 +1,13 @@
-import { navigate, render } from './router.js';
+import { renderLogin, renderHome } from './router.js';
+import { checkAuth } from './controllers/authController.js';
 
-window.navigate = navigate;
+async function init() {
+    const session = await checkAuth();
+    if (session) {
+        renderHome();
+    } else {
+        renderLogin();
+    }
+}
 
-window.addEventListener('load', () => {
-    render(window.location.pathname);
-});
+window.addEventListener('load', init);

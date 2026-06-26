@@ -1,7 +1,7 @@
 import { loginView } from './Views/loginView.js';
 import { signupView } from './Views/signupView.js';
 import { homeView } from './Views/homeView.js';
-import { setupLoginListener, setupSignupListener, checkAuth } from './controllers/authController.js';
+import { setupLoginListener, setupSignupListener, checkAuth, logout } from './controllers/authController.js';
 
 export async function renderLogin() {
     const session = await checkAuth();
@@ -32,4 +32,11 @@ export async function renderHome() {
         return;
     }
     document.getElementById('content').innerHTML = homeView;
+    
+    const btnLogout = document.getElementById('btnLogout');
+    if (btnLogout) {
+        btnLogout.addEventListener('click', async () => {
+            await logout();
+        });
+    }
 }

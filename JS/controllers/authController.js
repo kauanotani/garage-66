@@ -5,8 +5,9 @@ export function setupLoginListener() {
     if (loginForm) {
         loginForm.addEventListener('submit', async (e) => {
             e.preventDefault();
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
+            const email = loginForm.querySelector('input[type="email"]').value;
+            const password = loginForm.querySelector('input[type="password"]').value;
+            
             const { error } = await supabase.auth.signInWithPassword({ email, password });
             if (error) alert('Erro ao entrar: ' + error.message);
             else {
@@ -22,8 +23,9 @@ export function setupSignupListener() {
     if (signupForm) {
         signupForm.addEventListener('submit', async (e) => {
             e.preventDefault();
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
+
+            const email = signupForm.querySelector('input[type="email"]').value;
+            const password = signupForm.querySelector('input[type="password"]').value;
 
             const { data, error } = await supabase.auth.signUp({
                 email,
@@ -46,5 +48,5 @@ export async function checkAuth() {
 
 export async function logout() {
     await supabase.auth.signOut();
-    window.location.reload();
+    window.location.href = 'index.html';
 }

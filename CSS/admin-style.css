@@ -1,0 +1,30 @@
+﻿.admin-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 70px 20px;
+  background: radial-gradient(circle at top, rgba(10, 24, 54, 0.9), #02030a 55%);
+}
+
+.auth-panel {
+  width: 100%;
+  max-width: 520px;
+}
+
+.login-card {
+  background: rgba(5, 13, 32, 0.95);
+  border: 1px solid rgba(97, 141, 199, 0.14);
+  padding: 36px 32px;
+  border-radius: 22px;
+}
+
+.login-card h1 {
+  font-size: 2rem;
+  margin-bottom: 14px;
+}
+
+.login-card p {
+  color: #b8c9e4;
+  margin-bottom: 22px;
+}

@@ -1,69 +1,81 @@
-/* Estilos específicos da página de cadastro */
-.login-container {
+﻿.auth-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 70px 20px 40px;
+  background: linear-gradient(180deg, rgba(3, 6, 11, 0.92) 0%, rgba(9, 14, 22, 0.98) 100%);
+}
+
+.auth-panel {
   width: 100%;
-  max-width: 450px;
-  margin: 0 auto;
+  max-width: 520px;
+}
+
+.brand-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.brand-header h1 {
+  font-size: 2.8rem;
+}
+
+.brand-header p {
+  color: #ccc;
+  margin-top: 10px;
+}
+
+.login-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  padding: 36px 32px;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.28);
 }
 
 .form-title {
-  font-family: "Inter", serif;
-  font-size: 1.8rem;
-  margin-bottom: 1.1rem;
+  font-size: 2rem;
+  margin-bottom: 14px;
   text-align: center;
-  line-height: 1.1;
-  color: #fff;
 }
 
 .form-subtitle {
+  color: #c7c7c7;
   text-align: center;
-  color: #ccc;
-  font-size: 0.9rem;
-  margin-bottom: 1.4rem;
-  font-family: "Inter", sans-serif;
+  margin-bottom: 28px;
+}
+
+.login-card label {
+  display: block;
+  margin-bottom: 8px;
+  color: #eef0f2;
+}
+
+.login-card input {
+  width: 100%;
+  padding: 14px 16px;
+  margin-bottom: 20px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
 }
 
 p.form-footer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 0.4rem;
   text-align: center;
-  margin: 0 auto;
+  color: #ccc;
+  margin-top: 18px;
 }
 
-.login-container #btnIrLogin {
+#btnIrLogin {
   color: #d32f2f;
   cursor: pointer;
-  display: inline-block;
-  transition: transform 0.2s ease, text-shadow 0.2s ease;
   font-weight: 700;
 }
-.login-container #btnIrLogin:hover {
-  animation: pulse-hover 0.6s ease-in-out infinite;
-}
 
-@media (max-width: 768px) {
-  .login-container {
-    max-width: 100%;
-  }
-
-  .form-title,
-  .form-subtitle {
-    font-size: 1.6rem;
-  }
-
-  .login-container #btnIrLogin {
-    font-size: 1rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .form-title {
-    font-size: 1.5rem;
-  }
-
-  .form-subtitle {
-    font-size: 0.85rem;
+@media (max-width: 680px) {
+  .login-card {
+    padding: 28px 22px;
   }
 }

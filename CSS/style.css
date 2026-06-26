@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&family=Inter:wght@400;500&family=Montserrat:wght@300&family=Poppins:wght@600&display=swap");
+﻿@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&family=Inter:wght@400;500&family=Montserrat:wght@300&family=Poppins:wght@600&display=swap");
 
 * {
   margin: 0;
@@ -9,38 +9,10 @@
 body {
   min-height: 100vh;
   width: 100vw;
-  background: url("../images/imagemLogin.png") no-repeat center center/cover;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background: #050507;
+  color: #f4f4f4;
   font-family: "Inter", sans-serif;
-  color: white;
   overflow-x: hidden;
-  padding: 20px;
-}
-
-.brand-header {
-  position: absolute;
-  top: 40px;
-  left: 60px;
-}
-.brand-header h1 {
-  font-family: "Cormorant Garamond", serif;
-  font-size: 2.5rem;
-  letter-spacing: 2px;
-  color: #ffffff;
-}
-.brand-header p {
-  font-family: "Montserrat", sans-serif;
-  font-size: 0.7rem;
-  letter-spacing: 3px;
-  color: rgba(255,255,255,0.9);
-  text-transform: uppercase;
-}
-
-.brand-header .brand-number {
-  color: #d32f2f;
-  font-weight: 700;
 }
 
 #content {
@@ -48,152 +20,148 @@ body {
   max-width: 100%;
 }
 
-.login-card {
-  width: 100%;
-  max-width: 450px;
+.container {
+  max-width: 1120px;
   margin: 0 auto;
-  background: rgba(0, 0, 0, 0.65);
-  backdrop-filter: blur(20px);
-  padding: 45px 40px;
-  border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  position: relative;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
-  display: flex;
-  flex-direction: column;
+  padding: 0 20px;
 }
 
-.login-card::before {
-  content: "";
-  position: absolute;
+.site-header {
+  background: rgba(8, 12, 19, 0.92);
+  backdrop-filter: blur(12px);
+  position: fixed;
+  top: 0;
   left: 0;
-  top: 15%;
-  bottom: 15%;
-  width: 4px;
-  background: #d32f2f;
-  border-radius: 0 4px 4px 0;
+  right: 0;
+  z-index: 50;
 }
 
-label {
-  display: block;
-  margin-bottom: 8px;
-  font-size: 0.85rem;
+.nav-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 16px 0;
+}
+
+.brand {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.8rem;
+  color: #ffffff;
+}
+
+.brand-number {
+  color: #d32f2f;
+  font-weight: 700;
+}
+
+.main-nav {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.main-nav a {
   color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
 }
 
-input {
-  width: 100%;
-  padding: 12px;
-  margin-bottom: 20px;
-  border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.05);
-  color: white;
+.main-nav a:hover,
+.main-nav a.active {
+  color: #d32f2f;
 }
 
-.btn-login {
-  width: 100%;
-  padding: 15px;
-  background: #d32f2f;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  font-family: "Poppins", sans-serif;
-  font-weight: 600;
+.nav-actions {
+  display: flex;
+  align-items: center;
+}
+
+.btn-primary,
+.btn-secondary,
+.btn-admin,
+.btn-login,
+.btn-ghost {
   cursor: pointer;
-  margin-top: 10px;
-  margin-bottom: 20px;
-  transition: background 0.3s;
+  transition: all 0.2s ease;
 }
+
+.btn-admin,
+.btn-ghost,
+.btn-secondary {
+  border: 1px solid rgba(211, 47, 47, 0.8);
+  background: transparent;
+  color: #fff;
+  border-radius: 8px;
+  padding: 10px 18px;
+}
+
+.btn-admin:hover,
+.btn-ghost:hover,
+.btn-secondary:hover {
+  background: rgba(211, 47, 47, 0.14);
+}
+
+.btn-primary,
+.btn-login {
+  background: #d32f2f;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 14px 22px;
+  font-weight: 600;
+}
+
+.btn-primary:hover,
 .btn-login:hover {
   background: #b71c1c;
 }
 
+.page-frame {
+  min-height: 100vh;
+  padding-top: 90px;
+}
 
-.checkbox-container {
-  display: flex !important;
+.page-main {
+  padding: 40px 0 80px;
+}
+
+.site-footer {
+  background: rgba(8, 12, 19, 0.9);
+  color: #ccc;
+  padding: 24px 0;
+}
+
+.footer-row {
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
   align-items: center;
-  gap: 8px;
-  cursor: pointer;
-  margin-bottom: 20px;
-}
-.checkbox-container input {
-  width: auto !important;
-  margin-bottom: 0 !important;
+  flex-wrap: wrap;
 }
 
-@keyframes pulse-hover {
-  0% {
-    transform: scale(1);
-    text-shadow: 0 0 0 rgba(211,47,47,0.0);
-  }
-  50% {
-    transform: scale(1.06);
-    text-shadow: 0 6px 18px rgba(211,47,47,0.12);
-  }
-  100% {
-    transform: scale(1);
-    text-shadow: 0 0 0 rgba(211,47,47,0.0);
+.address,
+.socials,
+.copyright {
+  font-size: 0.95rem;
+}
+
+.socials a {
+  color: #fff;
+  text-decoration: none;
+}
+
+@media (max-width: 900px) {
+  .nav-row {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }
 
-@media (max-width: 768px) {
-  .brand-header {
-    position: relative;
-    top: 0;
-    left: 0;
-    text-align: center;
-    margin-bottom: 20px;
-  }
-
-  .brand-header h1 {
-    font-size: 2rem;
-  }
-
-  .brand-header p {
-    font-size: 0.75rem;
-    letter-spacing: 2px;
-  }
-
-  .login-card {
-    max-width: 100%;
-    padding: 30px 20px;
-  }
-
-  .login-card::before {
-    display: none;
-  }
-
-  input,
-  .btn-login {
-    font-size: 1rem;
-  }
-
-  input {
-    padding: 14px;
-    margin-bottom: 18px;
-  }
-
-  .btn-login {
-    padding: 14px;
-  }
-}
-
-@media (max-width: 480px) {
-  body {
-    padding: 12px;
-  }
-
-  .brand-header h1 {
-    font-size: 1.8rem;
-  }
-
-  .brand-header p {
-    font-size: 0.7rem;
-  }
-
-  .login-card {
-    padding: 25px 16px;
-    border-radius: 16px;
+@media (max-width: 680px) {
+  .footer-row {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }

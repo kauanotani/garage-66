@@ -18,7 +18,7 @@
     <main class="page-main container">
         <section class="section-intro">
             <h1>Sobre a Garage 66</h1>
-            <p>Somos a curadoria mais cuidadosa de carros clássicos do Brasil, oferecendo experiências personalizadas de locação, eventos e exposições.</p>
+            <p>Somos a locadora mais cuidadosa de carros clássicos do Brasil, oferecendo experiências personalizadas de locação, eventos e exposições.</p>
         </section>
 
         <section class="section-details">

@@ -8,7 +8,7 @@
 
         <div class="login-card">
             <form id="loginForm" class="form-container">
-                <h1>Admin / Entrar</h1>
+                <h1>Admin</h1>
                 <p>Faça o login para acessar o painel de administrador.</p>
 
                 <label>E-mail</label>

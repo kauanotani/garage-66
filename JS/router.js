@@ -19,6 +19,7 @@ function setNav(id, fn) {
 }
 
 function attachGlobalNavHandlers(activeId = 'navHome') {
+    setNav('navLogo', renderHome);
     setNav('navHome', renderHome);
     setNav('navSobre', renderSobre);
     setNav('navColecao', renderColecao);
@@ -31,6 +32,13 @@ function attachGlobalNavHandlers(activeId = 'navHome') {
 
     const btnLogout = document.getElementById('btnLogout');
     if (btnLogout) btnLogout.addEventListener('click', async () => await logout());
+}
+
+function scrollToSection(id) {
+    const element = document.getElementById(id);
+    if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
 }
 
 function attachHomeInteractions() {
@@ -48,6 +56,19 @@ function attachHomeInteractions() {
             if (carId) renderDescVeiculo(carId);
         });
     });
+
+    const contactForm = document.getElementById('homeContactForm');
+    if (contactForm) {
+        contactForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const nome = contactForm.querySelector('input[name="name"]').value.trim();
+            const email = contactForm.querySelector('input[name="email"]').value.trim();
+            const mensagem = contactForm.querySelector('textarea[name="message"]').value.trim();
+            const whatsappNumber = '5561996807260';
+            const text = encodeURIComponent(`Olá, meu nome é ${nome}. Gostaria de mais informações. E-mail: ${email}. Mensagem: ${mensagem}`);
+            window.location.href = `https://wa.me/${whatsappNumber}?text=${text}`;
+        });
+    }
 }
 
 function attachCollectionInteractions() {
@@ -66,13 +87,6 @@ function attachDetailPageInteractions() {
             event.preventDefault();
             renderColecao();
         });
-    }
-}
-
-function scrollToFooter() {
-    const footer = document.querySelector('.site-footer');
-    if (footer) {
-        footer.scrollIntoView({ behavior: 'smooth' });
     }
 }
 
@@ -104,6 +118,12 @@ export async function renderSignup() {
     if (btnIrLogin) btnIrLogin.addEventListener('click', renderLogin);
 }
 
+function loadHomePage(activeNav = 'navHome') {
+    document.getElementById('content').innerHTML = homeView;
+    attachGlobalNavHandlers(activeNav);
+    attachHomeInteractions();
+}
+
 export async function renderHome() {
     const session = await checkAuth();
     if (!session) {
@@ -111,9 +131,7 @@ export async function renderHome() {
         return;
     }
 
-    document.getElementById('content').innerHTML = homeView;
-    attachGlobalNavHandlers('navHome');
-    attachHomeInteractions();
+    loadHomePage('navHome');
 }
 
 export async function renderSobre() {
@@ -146,26 +164,14 @@ export async function renderContato() {
         return;
     }
 
-    const footer = document.querySelector('.site-footer');
-    if (footer) {
-        scrollToFooter();
-        return;
-    }
-
-    document.getElementById('content').innerHTML = contatoView;
-    attachGlobalNavHandlers('navContato');
+    loadHomePage('navContato');
+    scrollToSection('contato');
 }
 
 export async function renderAdmin() {
-    const session = await checkAuth();
-    if (session) {
-        renderHome();
-        return;
-    }
-
     document.getElementById('content').innerHTML = adminView;
     setupLoginListener();
-    attachGlobalNavHandlers();
+    attachGlobalNavHandlers('navAdmin');
 }
 
 export async function renderDescVeiculo(carId) {
@@ -176,6 +182,5 @@ export async function renderDescVeiculo(carId) {
     }
 
     document.getElementById('content').innerHTML = descVeiculoView(carId);
-    attachGlobalNavHandlers();
-    attachDetailPageInteractions();
+    attachGlobalNavHandlers('navColecao');
 }
